@@ -38,14 +38,3 @@ make
 The default install location is `/usr/local`. To change this, run cmake with the desired prefix (e.g. `cmake -DCMAKE_INSTALL_PREFIX=/usr ..`)
 
 Install with `sudo make install`
-
-## Documentation
-
-Documentation is hosted on [GitHub Pages](https://mwaverecycling.github.io/I2CPP/), but you can also build documentation from source using Doxygen.
-
-After installing Doxygen, build the documentation from the build directory:
-```bash
-cd build
-make doc
-```
-
