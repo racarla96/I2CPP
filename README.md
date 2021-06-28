@@ -2,7 +2,7 @@
 
 # I2CPP
 
-A C++ Library for interfacing with I2C Devices on Linux systems, particularly aimed at single board computer such as Raspberry Pi, Jetson Nano and Beaglebone.
+A C++ Library for interfacing with I2C Devices on Linux systems, particularly aimed at single board computer (SBC) such as Raspberry Pi, Jetson Nano and Beaglebone.
 
 ## Usage Example
 
