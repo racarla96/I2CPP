@@ -1,5 +1,3 @@
-
-
 # I2CPP
 
 A C++ Library for interfacing with I2C Devices on Linux systems, particularly aimed at single board computer (SBC) such as Raspberry Pi, Jetson Nano and Beaglebone.
@@ -7,13 +5,15 @@ A C++ Library for interfacing with I2C Devices on Linux systems, particularly ai
 ## Usage Example
 
 ```cpp
-#include <i2cpp/devices/pca9555.hpp>
+#include <i2cpp.hpp>
+
+i2cpp * _i2c;
 
 int main()
 {
-    i2cpp::PCA9555 io_exp(1, 0x20);
-    io_exp.write_config(0x0000);
-    io_exp.write_output_pin(0, true);
+	_i2c = new i2cpp();
+	_i2c->begin(I2C_BUS, I2C_ADDR);
+	return 0;
 }
 ```
 Include the library when you compile:
@@ -23,13 +23,13 @@ g++ your_source.cpp -li2cpp
 
 ## Dependencies
 
-There are no runtime dependencies, but the project requires [CMake](https://cmake.org/download/) to build and [Doxygen](http://www.stack.nl/~dimitri/doxygen/download.html) for documentation.
+There are no runtime dependencies, but the project requires [CMake](https://cmake.org/download/) to build.
 
 ## Building and Installation
 
 Clone the repository, then run CMake and Make in a build directory:
 ```bash
-git clone https://github.com/mwaverecycling/I2CPP
+git clone https://github.com/racarla96/I2CPP
 mkdir I2CPP/build
 cd I2CPP/build
 cmake ..
