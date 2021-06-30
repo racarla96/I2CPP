@@ -29,7 +29,7 @@ class i2cpp {
  private:
   int fd;
   uint8_t address;
-  string device;
+  std::string device;
 
  public:
   i2cpp();
