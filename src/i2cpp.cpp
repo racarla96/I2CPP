@@ -8,20 +8,12 @@ bool i2cpp::begin(int bus, uint8_t address) {
   this->address = address;
   if (fd = open(device.c_str(), O_RDWR) < 0)
     return false;
-  else
-    return true;
+  if (ioctl(fd, I2C_SLAVE, address) < 0)
+    return false;
+  return true;
 }
 
 bool i2cpp::writeReg(uint8_t reg, uint8_t *data, int length) {
-
-  uint8_t value;
-  if (ioctl(fd, I2C_SLAVE, address) < 0)
-  {
-#if defined(DEBUG)
-    cout << "Failed to acquire bus access and/or talk to slave." << endl;
-#endif
-    return false;;
-  }
 
   uint8_t buf[2];
   int ret;
@@ -46,14 +38,6 @@ bool i2cpp::writeReg(uint8_t reg, uint8_t *data, int length) {
 }
 
 bool i2cpp::readReg(uint8_t reg, uint8_t *data, int length) {
-
-  if (ioctl(fd, I2C_SLAVE, address) < 0)
-  {
-#if defined(DEBUG)
-    cout << "Failed to acquire bus access and/or talk to slave." << endl;
-#endif
-    return false;;
-  }
 
   uint8_t u8Ret;
   for(int i = 0; i < length; i++){
