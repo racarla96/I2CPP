@@ -32,6 +32,6 @@ class i2cpp {
   bool begin(int bus, uint8_t address);
   bool writeReg(uint8_t reg, uint8_t *data, int length);
   bool readReg(uint8_t reg, uint8_t *data, int length);
-  bool close(void);
+  //bool close(void);
 };
 #endif

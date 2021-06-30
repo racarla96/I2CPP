@@ -73,6 +73,7 @@ bool i2cpp::readReg(uint8_t reg, uint8_t *data, int length) {
   return true; 
 }
 
+/*
 bool i2cpp::close(void) {
   return close(&fd) == 0;
-}
+}*/
