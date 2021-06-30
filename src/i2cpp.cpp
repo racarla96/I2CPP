@@ -15,6 +15,7 @@ bool i2cpp::begin(int bus, uint8_t address) {
 
 bool i2cpp::writeReg(uint8_t reg, uint8_t *data, int length) {
 
+  uint8_t value;
   uint8_t buf[2];
   int ret;
   for(int i = 0; i < length; i++){
