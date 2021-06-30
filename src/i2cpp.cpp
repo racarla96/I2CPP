@@ -6,9 +6,11 @@ i2cpp::i2cpp() {
 bool i2cpp::begin(int bus, uint8_t address) {
   this->device = "/dev/i2c-" + std::to_string(bus);
   this->address = address;
-  if (fd = open(device.c_str(), O_RDWR) < 0)
+  fd = open(device.c_str(), O_RDWR);
+  if (fd < 0)
     return false;
-  if (ioctl(fd, I2C_SLAVE, address) < 0)
+  int rc = ioctl(fd, I2C_SLAVE, address)
+  if (rc < 0)
     return false;
   return true;
 }
