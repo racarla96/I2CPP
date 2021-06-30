@@ -6,7 +6,7 @@ i2cpp::i2cpp() {
 bool i2cpp::begin(int bus, uint8_t address) {
   this->device = "/dev/i2c-" + std::to_string(bus);
   this->address = address;
-  if (fd = open(device, O_RDWR) < 0)
+  if (fd = open(device.c_str(), O_RDWR) < 0)
     return false;
   else
     return true;
@@ -74,5 +74,5 @@ bool i2cpp::readReg(uint8_t reg, uint8_t *data, int length) {
 }
 
 bool i2cpp::close(void) {
-  return close(fd);
+  return close(&fd) == 0;
 }
