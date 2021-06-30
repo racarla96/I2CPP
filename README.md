@@ -35,11 +35,19 @@ i2cpp * _i2c;
 
 int main()
 {
+        bool ret;
+
         _i2c = new i2cpp();
-        _i2c->begin(1, 0x29);
+        ret = _i2c->begin(1, 0x29);
+        std::cout << std::boolalpha << ret << std::endl;
+        if(ret == false) return -1;
+
         uint8_t data;
-        _i2c->readReg(0x00, &data, 1);
-        cout << "Chip identification code, read-only fixed value 0xA0 ==" << std::hex << unsigned(data[0]) << endl;
+        ret = _i2c->readReg(0x00, &data, 1);
+        std::cout << std::boolalpha << ret << std::endl;
+        if(ret == false) return -1;
+        cout << "Chip identification code, read-only fixed value 0xA0 == 0x" << std::hex << unsigned(data) << endl;
+
         return 0;
 }
 ```
