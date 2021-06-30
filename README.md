@@ -38,3 +38,7 @@ make
 The default install location is `/usr/local`. To change this, run cmake with the desired prefix (e.g. `cmake -DCMAKE_INSTALL_PREFIX=/usr ..`)
 
 Install with `sudo make install`
+
+## Get clock rate i2c from CLI
+
+`cat /sys/bus/i2c/devices/i2c-X/bus_clk_rate`
