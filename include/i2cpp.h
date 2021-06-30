@@ -10,15 +10,19 @@
 #include <cstdint>
 #include <string>
 
-using namespace std;
+#include <fcntl.h>
+#include <linux/i2c.h>
+#include <linux/i2c-dev.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <sys/ioctl.h>
+#include <unistd.h>
 
 //#define DEBUG
 
 #if defined(DEBUG)
-
+  using namespace std;
   #include <iostream>
-  #include <string>
-
 #endif
 
 class i2cpp {

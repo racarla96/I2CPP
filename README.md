@@ -5,7 +5,7 @@ A C++ Library for interfacing with I2C Devices on Linux systems, particularly ai
 ## Usage Example
 
 ```cpp
-#include <i2cpp.hpp>
+#include <i2cpp.h>
 
 i2cpp * _i2c;
 
@@ -19,6 +19,34 @@ int main()
 Include the library when you compile:
 ```bash
 g++ your_source.cpp -li2cpp
+```
+
+## Usage Example 2
+
+Read BNO055 Chip Identification
+
+```cpp
+#include <i2cpp.h>
+#include <iostream>
+
+using namespace std;
+
+i2cpp * _i2c;
+
+int main()
+{
+        _i2c = new i2cpp();
+        _i2c->begin(1, 0x29);
+        uint8_t data;
+        _i2c->readReg(0x00, &data, 1);
+        cout << "Chip identification code, read-only fixed value 0xA0 ==" << std::hex << unsigned(data[0]) << endl;
+        return 0;
+}
+```
+
+Include the library when you compile:
+```bash
+g++ example.cpp -li2cpp
 ```
 
 ## Dependencies
@@ -39,6 +67,6 @@ The default install location is `/usr/local`. To change this, run cmake with the
 
 Install with `sudo make install`
 
-## Get clock rate i2c from CLI
+## Permissions
 
-`cat /sys/bus/i2c/devices/i2c-X/bus_clk_rate`
+`sudo usermod -aG i2c ${USER}`
