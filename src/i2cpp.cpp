@@ -9,7 +9,7 @@ bool i2cpp::begin(int bus, uint8_t address) {
   fd = open(device.c_str(), O_RDWR);
   if (fd < 0)
     return false;
-  int rc = ioctl(fd, I2C_SLAVE, address)
+  int rc = ioctl(fd, I2C_SLAVE, address);
   if (rc < 0)
     return false;
   return true;
